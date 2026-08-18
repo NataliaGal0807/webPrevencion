@@ -1,0 +1,406 @@
+/* Variables */
+
+:root {
+  --bg-body: #fff;
+  --primary-color: #40953d;
+  --secondary-color: #c0eba6;
+  --tertiary-color: #fccd2a;
+  --text-blue: #2d3055;
+  --bone-white: #fffdf6;
+}
+/*Clases universales*/
+body {
+  font-family: "Stack Sans Headline", sans-serif;
+  background-color: var(--bone-white);
+}
+html {
+  font-size: 95%; /* Reduce sutilmente el tamaño base de todo el sitio */
+}
+
+.btn-prevencion {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  color: #fff;
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    color 0.3s ease;
+}
+.btn-prevencion:hover {
+  background-color: #2e6e2c; /* Un verde un poco más oscuro para dar feedback visual */
+  border-color: #2e6e2c;
+  color: #ffffff;
+}
+/*BARRA DE NAVEGACIÓN*/
+
+nav.bg-prevencion {
+  background: var(--bone-white);
+  margin: 5px;
+}
+
+nav.bg-prevencion ul li a {
+  color: var(--text-blue);
+  position: relative;
+}
+
+nav.bg-prevencion ul li a::after {
+  width: 0%;
+  height: 2px;
+  background: transparent;
+  content: "";
+  position: absolute;
+  bottom: 2px;
+  left: 10px;
+  transition: 0.4s;
+}
+nav .navbar-brand img {
+  width: 220px;
+}
+nav.bg-prevencion ul li a:hover {
+  color: var(--primary-color);
+}
+nav.bg-prevencion ul li a:hover::after {
+  background: var(--primary-color);
+  width: 40%;
+}
+nav.bg-prevencion ul li.soli-info a {
+  display: block;
+  padding: 10px 30px;
+  color: #fff;
+  background: var(--primary-color);
+  border-radius: 4px;
+  margin-left: 15px;
+  width: 170px;
+  text-align: center;
+}
+.soli-info a::after {
+  display: none;
+}
+nav.bg-prevencion ul li.soli-info a:hover {
+  background-color: #264b2b;
+}
+
+nav .navbar-brand img.logo1 {
+  width: 50px;
+}
+nav .navbar-brand img.logo2 {
+  width: 220px;
+}
+nav.bg-prevencion div.navbarNavClass {
+  flex-direction: row-reverse;
+  font-size: 16px;
+}
+.nav-item {
+  padding: 6px;
+}
+
+/*PORTADA*/
+#hero {
+  padding: 90px 0px;
+  position: relative;
+  min-height: 85vh;
+
+  background-image: url("../img/señores-reunion.jpg");
+  background-size: cover;
+  background-position: center;
+
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+#hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: inherit;
+  filter: blur(5px);
+
+  transform: scale(1.05);
+}
+#hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.45);
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+
+  max-width: 700px;
+  color: white;
+}
+.hero-content h1 {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+}
+
+.hero-content p {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+.btn-hero {
+  font-size: 0.9rem;
+  padding: 0.3rem 1.2rem;
+  border-radius: 5px;
+  font-weight: 500; /* Peso de fuente medio para que no se vea tan pesado */
+}
+
+.btn-outline-light.btn-hero {
+  border-width: 2px;
+}
+
+.btn-outline-light.btn-hero:hover {
+  background-color: white;
+  color: var(--text-blue);
+}
+
+/*fORMULARIO DE CONTACTO*/
+#contacto {
+  position: relative;
+  z-index: 10; /* Asegura que el formulario quede por encima del filtro oscuro del hero */
+  margin-top: -90px; /* Este margen negativo "tira" la sección hacia arriba sobre la imagen */
+  padding-bottom: 50px; /* Espacio extra abajo para que no quede pegado al footer */
+  scroll-margin-top: 120px;
+}
+#contacto .container {
+  max-width: 1000px;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 40px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.contacto-info h2 {
+  color: var(--text-blue);
+  margin-top: 10px;
+  font-size: 1.35rem; /* Reducido de 1.7rem a 1.35rem para que no domine tanto visualmente */
+  line-height: 1.4; /* Mejora la lectura en dos líneas */
+}
+
+.contacto-info {
+  padding-right: 20px;
+}
+
+.contacto-info span {
+  color: var(--primary-color);
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.5px;
+}
+
+/*Reducir tamaños de formularios de bookstrap*/
+#contacto .form-control,
+#contacto .form-select {
+  font-size: 0.85rem;
+  padding: 0.5rem 0.75rem; /* Reduce la altura de los campos para que se vean más estilizados */
+}
+
+/* Reducir también el tamaño del texto dentro del botón de enviar */
+#contacto button[type="submit"] {
+  font-size: 0.85rem;
+  padding: 0.5rem;
+}
+/* Estilo para las tarjetas de servicios en el inicio */
+.service-card {
+  border-radius: 10px;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  background-color: #fff;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08) !important;
+}
+/* Control de altura para las imágenes de las tarjetas de servicios */
+.service-card .service-img {
+  height: 180px; /* Ajusta este valor si las quieres más altas o más bajas */
+  object-fit: cover; /* Evita que la imagen se deforme, recortando los bordes si es necesario */
+}
+/* Botón flotante de WhatsApp */
+.btn-whatsapp-flotante {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  z-index: 1000;
+  width: 55px;
+  height: 55px;
+  background-color: #25d366;
+  color: #fff; /* Esto asegura que el "fill=currentColor" pinte el SVG de blanco */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition:
+    transform 0.3s ease,
+    background-color 0.3s ease;
+}
+
+.btn-whatsapp-flotante:hover {
+  transform: scale(1.1);
+  background-color: #20ba5a;
+  color: #fff;
+}
+
+/* ==========================================
+   FOOTER
+   ========================================== */
+.footer-prevencion {
+  background-color: var(--text-blue);
+  color: var(--bone-white);
+}
+
+.footer-logo {
+  width: 70px;
+  height: auto;
+}
+.footer-logo-2 {
+  width: 210px;
+  height: auto;
+  filter: brightness(0) invert(1);
+}
+.footer-title {
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 1.2rem;
+  position: relative;
+}
+
+/* Línea sutil verde bajo cada título de sección del footer */
+.footer-title::after {
+  content: "";
+  display: block;
+  width: 30px;
+  height: 2px;
+  background-color: var(--primary-color);
+  margin-top: 6px;
+}
+
+/* Texto secundario atenuado para mejor legibilidad */
+.text-muted-custom {
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+}
+
+/* Enlaces */
+.footer-links li {
+  margin-bottom: 8px;
+}
+
+.footer-links a {
+  color: rgba(255, 255, 255, 0.75);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition:
+    color 0.3s ease,
+    padding-left 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: var(--secondary-color); /* Cambia a verde claro al pasar el mouse */
+  padding-left: 5px; /* Efecto sutil de desplazamiento hacia la derecha */
+}
+
+/* Información de contacto */
+.footer-contact li {
+  margin-bottom: 10px;
+  color: rgba(255, 255, 255, 0.85);
+  display: flex;
+  align-items: center;
+}
+
+.color-verde {
+  color: var(--primary-color);
+}
+
+/* Divisor horizontal */
+.footer-divider {
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+/* ==========================================
+   RESPONSIVE / MEDIA QUERIES (SIEMPRE AL FINAL)
+   ========================================== */
+@media (max-width: 768px) {
+  /*BARRA DE NAVEGACIÓN RESPONSIVE*/
+
+  .navbar-toggler {
+    border-color: var(--primary-color); /* Borde con tu verde principal */
+    padding: 0.2rem 0.4rem;
+    font-size: 0.9rem;
+    border-width: 1.8px;
+  }
+  .navbar-toggler:focus {
+    box-shadow: 0 0 0 0.25rem rgba(64, 149, 61, 0.25); /* Sombra sutil en tu verde verde */
+  }
+  .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%2340953d' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2.5' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+  }
+
+  nav .navbar-brand img.logo2 {
+    width: 180px; /* Reducimos de 220px a 160px */
+  }
+
+  nav .navbar-brand img.logo1 {
+    width: 40px;
+  }
+  .nav-item {
+    padding: 3px 0px;
+  }
+  nav.bg-prevencion ul li a {
+    display: inline-block; /* Asegura que el texto no ocupe todo el ancho innecesariamente */
+    padding: 5px 0px; /* Controla el espacio clickeable del enlace */
+  }
+
+  /*PORTADA RESPONSIVE*/
+  #hero {
+    min-height: 60vh; /* Evita que la imagen de fondo ocupe tanta pantalla vertical */
+    padding: 60px 0px; /* Reduce el relleno superior e inferior */
+  }
+
+  .hero-content h1 {
+    font-size: 2rem; /* Reduce el título drásticamente para móviles */
+    margin-bottom: 1rem;
+  }
+
+  .hero-content p {
+    font-size: 0.9rem; /* Achica un poco el texto del párrafo */
+    margin-bottom: 1.5rem;
+  }
+
+  .btn-hero {
+    font-size: 0.85rem; /* Ajusta el tamaño del texto del botón */
+    padding: 0.4rem 1rem;
+  }
+  /*fORMULARIO DE CONTACTO RESPONSIVE*/
+
+  #contacto {
+    margin-top: -40px; /* Ahora sí ganará prioridad y subirá solo -30px en celular */
+  }
+
+  #contacto .container {
+    padding: 20px; /* Hace el formulario un poco más compacto en teléfonos */
+  }
+}
+@media (max-width: 991px) {
+  /* Oculta la línea ::after en cuanto aparece la hamburguesa (hasta los 991px), 
+     sin tocar los logos ni los tamaños de los celulares */
+  nav.bg-prevencion ul li a::after {
+    display: none;
+  }
+  nav.bg-prevencion ul li.soli-info a {
+    margin-left: 0; /* Elimina el desfase horizontal en móvil */
+    margin-right: 0;
+    width: 195px; /* Ancho más cómodo para el toque con el dedo */
+    margin-top: 10px;
+    margin-bottom: 5px;
+  }
+}
