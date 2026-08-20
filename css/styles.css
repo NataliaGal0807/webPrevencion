@@ -96,11 +96,12 @@ nav.bg-prevencion div.navbarNavClass {
 
 /*PORTADA*/
 #hero {
-  padding: 80px 0px;
+  padding: 60px 0px;
   position: relative;
-  min-height: 85vh;
+  height: auto;
+  min-height: 600px;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   overflow: hidden;
 }
 
@@ -177,7 +178,7 @@ nav.bg-prevencion div.navbarNavClass {
 #contacto {
   position: relative;
   z-index: 10; /* Asegura que el formulario quede por encima del filtro oscuro del hero */
-  margin-top: -90px; /* Este margen negativo "tira" la sección hacia arriba sobre la imagen */
+  margin-top: -70px; /* Este margen negativo "tira" la sección hacia arriba sobre la imagen */
   padding-bottom: 50px; /* Espacio extra abajo para que no quede pegado al footer */
   scroll-margin-top: 120px;
 }
@@ -439,8 +440,10 @@ nav.bg-prevencion div.navbarNavClass {
     margin-bottom: 1rem;
   }
 
-  .hero-content p {
-    font-size: 0.75rem; /* Achica un poco el texto del párrafo */
+  #hero p,
+  .hero-content p,
+  #hero .lead {
+    font-size: 0.9rem !important; /* Texto claro y no gigante */
     margin-bottom: 1.5rem;
   }
   .hero-content .d-flex {
