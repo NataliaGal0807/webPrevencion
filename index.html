@@ -64,10 +64,10 @@
                 <a class="nav-link" aria-current="page" href="#">Inicio</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Sobre mí</a>
+                <a class="nav-link" href="sobre-mi.html">Sobre mí</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Servicios</a>
+                <a class="nav-link" href="servicios.html">Servicios</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#pag-contacto">Contacto</a>
@@ -82,24 +82,41 @@
 
       <!--Portada-->
       <section id="hero">
+        <!-- 1. Video de fondo añadido antes del container -->
+        <video
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="auto"
+          poster="img/video-poster.png"
+          class="bg-video"
+        >
+          <source src="img/video-hero.mp4" type="video/mp4" />
+          Tu navegador no soporta videos HTML5.
+        </video>
+
+        <!-- 2. Capa oscura para que el texto resalte (muy importante con videos) -->
+        <div class="hero-overlay"></div>
+
+        <!-- 3. Tu contenido original intacto -->
         <div class="container">
           <div class="hero-content">
             <h1>Consultoría en Prevención de Riesgos</h1>
             <p>
-              Como expertos en Consultoría en Prevención de Riesgos con
-              cobertura en la Región del Maule, entendemos que la seguridad
-              ocupacional y el cuidado del medio ambiente son pilares
-              fundamentales para la sostenibilidad de cualquier organización.
+              Impulsamos la seguridad ocupacional y el desarrollo sostenible en
+              el Maule con soluciones integrales para tu organización.
             </p>
+
             <div class="d-flex gap-3 mt-4">
-              <!-- Botón Principal: WhatsApp (Prioridad 1) -->
+              <!-- Botón Principal: WhatsApp -->
               <a
                 href="https://wa.me/569XXXXXXXX"
                 class="btn btn-prevencion px-4 btn-hero"
                 >Consultar por WhatsApp</a
               >
 
-              <!-- Botón Secundario: Servicios (Prioridad 2) -->
+              <!-- Botón Secundario: Servicios -->
               <a
                 href="servicios.html"
                 class="btn btn-outline-light px-4 btn-hero"
@@ -137,34 +154,25 @@
 
                   <div class="col-md-6">
                     <input
-                      type="text"
+                      type="tel"
                       class="form-control"
-                      placeholder="Empresa"
+                      placeholder="Celular"
                     />
                   </div>
-
-                  <div class="col-md-4">
+                  <div class="col-md-12">
                     <input
                       type="email"
                       class="form-control"
                       placeholder="Correo"
                     />
                   </div>
-
-                  <div class="col-md-4">
-                    <input
-                      type="tel"
+                  <div class="col-md-12">
+                    <textarea
                       class="form-control"
-                      placeholder="Celular"
-                    />
-                  </div>
-
-                  <div class="col-md-4">
-                    <input
-                      type="text"
-                      class="form-control"
-                      placeholder="Consulta"
-                    />
+                      rows="2"
+                      placeholder="Escribe tu consulta o requerimiento aquí..."
+                      required
+                    ></textarea>
                   </div>
 
                   <!-- Contenedor del botón centrado -->
@@ -336,9 +344,9 @@
             <h5 class="footer-title">Navegación</h5>
             <ul class="list-unstyled footer-links">
               <li><a href="#">Inicio</a></li>
+              <li><a href="sobre.html">Sobre mí</a></li>
               <li><a href="servicios.html">Servicios</a></li>
-              <li><a href="nosotros.html">Nosotros</a></li>
-              <li><a href="">Contacto</a></li>
+              <li><a href="pag-contacto.html">Contacto</a></li>
             </ul>
           </div>
 
@@ -353,11 +361,13 @@
                 <a href="servicios.html#planes">Planes de Emergencia</a>
               </li>
               <li>
-                <a href="servicios.html#capacitacion">Capacitaciones SEC</a>
+                <a href="servicios.html#capacitacion"
+                  >Cursos de Primeros Auxilios</a
+                >
               </li>
               <li>
                 <a href="servicios.html#auditorias"
-                  >Auditorías e Inspecciones</a
+                  >Procedimiento de trabajo seguro</a
                 >
               </li>
             </ul>
@@ -431,5 +441,15 @@
         />
       </svg>
     </a>
+    <script>
+      // Precarga el video de inicio de forma silenciosa mientras está en Servicios
+      window.addEventListener("DOMContentLoaded", () => {
+        const videoPreload = document.createElement("link");
+        videoPreload.rel = "prefetch";
+        videoPreload.href = "img/video-hero.mp4";
+        videoPreload.as = "video";
+        document.head.appendChild(videoPreload);
+      });
+    </script>
   </body>
 </html>
