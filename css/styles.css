@@ -271,6 +271,7 @@ nav.bg-prevencion div.navbarNavClass {
 .footer-prevencion {
   background-color: var(--text-blue);
   color: var(--bone-white);
+  font-size: 0.85rem;
 }
 
 .footer-logo {
@@ -284,7 +285,7 @@ nav.bg-prevencion div.navbarNavClass {
 }
 .footer-title {
   color: #fff;
-  font-size: 1.1rem;
+  font-size: 0.95rem;
   font-weight: 600;
   margin-bottom: 1.2rem;
   position: relative;
@@ -314,7 +315,7 @@ nav.bg-prevencion div.navbarNavClass {
 .footer-links a {
   color: rgba(255, 255, 255, 0.75);
   text-decoration: none;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   transition:
     color 0.3s ease,
     padding-left 0.3s ease;
@@ -331,6 +332,7 @@ nav.bg-prevencion div.navbarNavClass {
   color: rgba(255, 255, 255, 0.85);
   display: flex;
   align-items: center;
+  font-size: 0.8rem;
 }
 
 .color-verde {
@@ -341,26 +343,33 @@ nav.bg-prevencion div.navbarNavClass {
 .footer-divider {
   border-color: rgba(255, 255, 255, 0.15);
 }
-/*PAGINA DE SERVICIOS y SOBRE MI*/
+/* ==========================================
+   HERO SECUNDARIOS (Servicios, Sobre Mí, Contacto)
+   ========================================== */
 #hero-servicios,
-#hero-sobre-mi {
+#hero-sobre-mi,
+#hero-contacto {
   background-color: var(--text-blue);
   padding: 80px 0;
   min-height: 364px;
+  display: flex;
+  align-items: center; /* Mantiene el contenido perfectamente centrado a lo alto */
 }
 
 #hero-servicios h1,
-#hero-sobre-mi h1 {
+#hero-sobre-mi h1,
+#hero-contacto h1 {
   font-size: 3rem;
   color: #ffffff;
   margin-bottom: 1rem;
 }
 
 #hero-servicios p,
-#hero-sobre-mi p {
+#hero-sobre-mi p,
+#hero-contacto p {
   font-size: 1rem;
   color: rgba(255, 255, 255, 0.85);
-  max-width: 700px;
+  max-width: 950px;
   margin: 0 auto;
   line-height: 1.6;
 }
@@ -402,31 +411,43 @@ nav.bg-prevencion div.navbarNavClass {
   /*BARRA DE NAVEGACIÓN RESPONSIVE*/
 
   .navbar-toggler {
-    border-color: var(--primary-color); /* Borde con tu verde principal */
+    border-color: var(--primary-color);
     padding: 0.2rem 0.4rem;
     font-size: 0.9rem;
     border-width: 1.8px;
   }
+
   .navbar-toggler:focus {
-    box-shadow: 0 0 0 0.25rem rgba(64, 149, 61, 0.25); /* Sombra sutil en tu verde verde */
+    box-shadow: 0 0 0 0.25rem rgba(64, 149, 61, 0.25);
   }
+
   .navbar-toggler-icon {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%2340953d' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2.5' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
   }
 
   nav .navbar-brand img.logo2 {
-    width: 180px; /* Reducimos de 220px a 160px */
+    width: 180px;
   }
 
   nav .navbar-brand img.logo1 {
     width: 40px;
   }
+
   .nav-item {
     padding: 3px 0px;
   }
+
   nav.bg-prevencion ul li a {
-    display: inline-block; /* Asegura que el texto no ocupe todo el ancho innecesariamente */
-    padding: 5px 0px; /* Controla el espacio clickeable del enlace */
+    display: inline-block;
+    padding: 5px 0px;
+  }
+
+  nav.bg-prevencion ul li.soli-info a {
+    margin-left: 0;
+    margin-right: 0;
+    width: 195px;
+    margin-top: 10px;
+    margin-bottom: 5px;
   }
 
   /*PORTADA RESPONSIVE*/
@@ -436,7 +457,7 @@ nav.bg-prevencion div.navbarNavClass {
   }
 
   .hero-content h1 {
-    font-size: 2rem; /* Reduce el título drásticamente para móviles */
+    font-size: 2.4rem; /* Reduce el título drásticamente para móviles */
     margin-bottom: 1rem;
   }
 
@@ -467,6 +488,25 @@ nav.bg-prevencion div.navbarNavClass {
     width: auto;
     margin: 0px 10px;
     padding: 20px; /* Hace el formulario un poco más compacto en teléfonos */
+  }
+  /* HERO SECUNDARIOS RESPONSIVE */
+  #hero-servicios,
+  #hero-sobre-mi,
+  #hero-contacto {
+    padding: 50px 15px; /* Reduce los márgenes y da un poco de espacio lateral */
+    min-height: 250px; /* Evita que queden demasiado altos en celular */
+  }
+
+  #hero-servicios h1,
+  #hero-sobre-mi h1,
+  #hero-contacto h1 {
+    font-size: 2rem; /* Achica el título para que no ocupe toda la pantalla */
+  }
+
+  #hero-servicios p,
+  #hero-sobre-mi p,
+  #hero-contacto p {
+    font-size: 0.9rem; /* Iguala la letra a la del resto de los párrafos en móvil */
   }
 }
 @media (max-width: 991px) {
