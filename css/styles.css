@@ -89,6 +89,7 @@ nav .navbar-brand img.logo2 {
 nav.bg-prevencion div.navbarNavClass {
   flex-direction: row-reverse;
   font-size: 16px;
+  padding: 10px 10px 0px 10px;
 }
 .nav-item {
   padding: 6px;
