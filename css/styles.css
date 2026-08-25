@@ -12,6 +12,7 @@
 body {
   font-family: "Stack Sans Headline", sans-serif;
   background-color: var(--bone-white);
+  padding-top: 45px; /* Evita que la NavBar tape el contenido */
 }
 html {
   font-size: 95%; /* Reduce sutilmente el tamaño base de todo el sitio */
@@ -35,12 +36,16 @@ html {
 
 nav.bg-prevencion {
   background: var(--bone-white);
-  margin: 5px;
+  padding: 5px;
 }
 
 nav.bg-prevencion ul li a {
   color: var(--text-blue);
   position: relative;
+}
+nav.bg-prevencion ul li a.active {
+  color: var(--primary-color) !important;
+  font-weight: 600 !important;
 }
 
 nav.bg-prevencion ul li a::after {
@@ -52,6 +57,10 @@ nav.bg-prevencion ul li a::after {
   bottom: 2px;
   left: 10px;
   transition: 0.4s;
+}
+nav.bg-prevencion ul li a.active::after {
+  background: var(--primary-color);
+  width: 40%;
 }
 nav .navbar-brand img {
   width: 220px;
@@ -74,7 +83,7 @@ nav.bg-prevencion ul li.soli-info a {
   text-align: center;
 }
 .soli-info a::after {
-  display: none;
+  display: none !important;
 }
 nav.bg-prevencion ul li.soli-info a:hover {
   background-color: #264b2b;
@@ -475,8 +484,8 @@ nav.bg-prevencion div.navbarNavClass {
   }
   .btn-hero {
     font-size: 0.85rem; /* Ajusta el tamaño del texto del botón */
-    padding: 0.4rem 1rem;
-    width: 90%;
+    padding: 0.5rem 1rem;
+    width: 80%;
     text-align: center;
   }
   /*fORMULARIO DE CONTACTO RESPONSIVE*/
@@ -501,7 +510,7 @@ nav.bg-prevencion div.navbarNavClass {
   #hero-servicios h1,
   #hero-sobre-mi h1,
   #hero-contacto h1 {
-    font-size: 2rem; /* Achica el título para que no ocupe toda la pantalla */
+    font-size: 2.3rem; /* Achica el título para que no ocupe toda la pantalla */
   }
 
   #hero-servicios p,
