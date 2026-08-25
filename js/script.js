@@ -114,16 +114,32 @@ const misServicios = [
 
 const container = document.getElementById("accordionServicios");
 
-misServicios.forEach((item, index) => {
-  container.innerHTML += `
-    <div class="accordion-item border-top border-bottom-0 border-start-0 border-end-0">
-      <h2 class="accordion-header" id="heading${index}">
-        <button class="accordion-button fw-bold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse${index}" aria-expanded="false" aria-controls="collapse${index}">
-          ${item.titulo}
-        </button>
-      </h2>
-      <div id="collapse${index}" class="accordion-collapse collapse" aria-labelledby="heading${index}" data-bs-parent="#accordionServicios">
-        <div class="accordion-body">${item.texto}</div>
-      </div>
-    </div>`;
+// Solo se ejecuta si el elemento existe en la página actual
+if (container) {
+  misServicios.forEach((item, index) => {
+    container.innerHTML += `
+      <div class="accordion-item border-top border-bottom-0 border-start-0 border-end-0">
+        <h2 class="accordion-header" id="heading${index}">
+          <button class="accordion-button fw-bold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse${index}" aria-expanded="false" aria-controls="collapse${index}">
+            ${item.titulo}
+          </button>
+        </h2>
+        <div id="collapse${index}" class="accordion-collapse collapse" aria-labelledby="heading${index}" data-bs-parent="#accordionServicios">
+          <div class="accordion-body">${item.texto}</div>
+        </div>
+      </div>`;
+  });
+}
+// 2. CERRAR MENÚ AL HACER SCROLL EN MÓVIL (CIERRE SUAVE)
+window.addEventListener("scroll", function () {
+  const navCollapse = document.querySelector(".navbar-collapse");
+
+  // Verifica si el menú desplegable está abierto
+  if (navCollapse && navCollapse.classList.contains("show")) {
+    // Usa la animación nativa de Bootstrap para replegarlo suavemente
+    const bsCollapse =
+      bootstrap.Collapse.getInstance(navCollapse) ||
+      new bootstrap.Collapse(navCollapse, { toggle: false });
+    bsCollapse.hide();
+  }
 });

@@ -96,7 +96,6 @@ nav .navbar-brand img.logo2 {
   width: 220px;
 }
 nav.bg-prevencion div.navbarNavClass {
-  flex-direction: row-reverse;
   font-size: 16px;
   padding: 10px 10px 0px 10px;
 }
@@ -413,53 +412,15 @@ nav.bg-prevencion div.navbarNavClass {
 .accordion-button:not(.collapsed)::before {
   content: "\2212"; /* Código Unicode para el signo menos */
 }
-
+/* PAGINA DE CONTACTO*/
+/* Margen de desplazamiento para la sección de canales directos en pag-contacto.html */
+#info-contacto {
+  scroll-margin-top: 100px;
+}
 /* ==========================================
    RESPONSIVE / MEDIA QUERIES (SIEMPRE AL FINAL)
    ========================================== */
 @media (max-width: 768px) {
-  /*BARRA DE NAVEGACIÓN RESPONSIVE*/
-
-  .navbar-toggler {
-    border-color: var(--primary-color);
-    padding: 0.2rem 0.4rem;
-    font-size: 0.9rem;
-    border-width: 1.8px;
-  }
-
-  .navbar-toggler:focus {
-    box-shadow: 0 0 0 0.25rem rgba(64, 149, 61, 0.25);
-  }
-
-  .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%2340953d' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2.5' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-  }
-
-  nav .navbar-brand img.logo2 {
-    width: 180px;
-  }
-
-  nav .navbar-brand img.logo1 {
-    width: 40px;
-  }
-
-  .nav-item {
-    padding: 3px 0px;
-  }
-
-  nav.bg-prevencion ul li a {
-    display: inline-block;
-    padding: 5px 0px;
-  }
-
-  nav.bg-prevencion ul li.soli-info a {
-    margin-left: 0;
-    margin-right: 0;
-    width: 195px;
-    margin-top: 10px;
-    margin-bottom: 5px;
-  }
-
   /*PORTADA RESPONSIVE*/
   #hero {
     min-height: 60vh; /* Evita que la imagen de fondo ocupe tanta pantalla vertical */
@@ -519,17 +480,91 @@ nav.bg-prevencion div.navbarNavClass {
     font-size: 0.9rem; /* Iguala la letra a la del resto de los párrafos en móvil */
   }
 }
+/* ==========================================
+   MENÚ RESPONSIVE Y OFFCANVAS (Hasta 991px)
+   ========================================== */
 @media (max-width: 991px) {
-  /* Oculta la línea ::after en cuanto aparece la hamburguesa (hasta los 991px), 
-     sin tocar los logos ni los tamaños de los celulares */
+  /* 1. Ocultar la línea verde inferior del menú de escritorio */
   nav.bg-prevencion ul li a::after {
-    display: none;
+    display: none !important;
   }
-  nav.bg-prevencion ul li.soli-info a {
-    margin-left: 0; /* Elimina el desfase horizontal en móvil */
-    margin-right: 0;
-    width: 195px; /* Ancho más cómodo para el toque con el dedo */
-    margin-top: 10px;
-    margin-bottom: 5px;
+
+  /* 2. Botón Hamburguesa */
+  .navbar-toggler {
+    border-color: var(--primary-color);
+    padding: 0.2rem 0.4rem;
+    font-size: 0.9rem;
+    border-width: 1.8px;
+  }
+
+  .navbar-toggler:focus {
+    box-shadow: 0 0 0 0.25rem rgba(64, 149, 61, 0.25);
+  }
+
+  .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%2340953d' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2.5' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+  }
+
+  /* 3. Tamaño de Logos en Tablets y Móviles */
+  nav .navbar-brand img.logo2 {
+    width: 210px;
+  }
+
+  nav .navbar-brand img.logo1 {
+    width: 40px;
+  }
+
+  /* 4. Contenedor del Menú Lateral (Offcanvas) */
+  .offcanvas-start {
+    background-color: var(--bone-white);
+    width: 82%;
+    max-width: 340px; /* Para que en tablets no ocupe toda la pantalla */
+  }
+
+  .offcanvas-header {
+    padding: 1.2rem 1.2rem 0.8rem 1.2rem;
+  }
+
+  .offcanvas-body {
+    padding: 1rem 1.2rem;
+  }
+
+  /* 5. Enlaces del Menú Lateral */
+  .menu-lat-link {
+    display: flex;
+    align-items: center;
+    padding: 12px 15px !important;
+    color: var(--text-blue) !important;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 8px;
+    margin-bottom: 6px;
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease;
+  }
+
+  .menu-lat-link i {
+    font-size: 1.2rem;
+    color: var(--text-blue);
+  }
+
+  /* 6. Enlace Activo (Caja Verde de la imagen) */
+  .menu-lat-link.active {
+    background-color: #e9f3e8;
+    color: var(--primary-color) !important;
+    border-left: 4px solid var(--primary-color);
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+  }
+
+  .menu-lat-link.active i {
+    color: var(--primary-color) !important;
+  }
+
+  /* 7. Texto Inferior */
+  .menu-lateral-footer .info-texto p {
+    color: var(--text-blue);
+    line-height: 1.35;
   }
 }
