@@ -385,23 +385,27 @@ nav.bg-prevencion div.navbarNavClass {
   line-height: 1.6;
 }
 
+/* =========================================
+   NUEVOS ESTILOS DE ACORDEON DE SERVICIOS
+   ========================================= */
 /* Ajuste de tamaño para los acordeones de servicios */
 .accordion-button {
   font-size: 0.9rem; /* Letra un poco más compacta y elegante */
   font-weight: 600; /* Mantiene el peso para que sea legible */
 }
 
-/* Si también quieres ajustar el texto interno cuando se abre el acordeón */
+/* Ajuste del texto interno cuando se abre el acordeón */
 .accordion-body {
   font-size: 0.85rem;
   color: #555;
 }
-/* Edicion de boton de acordion */
+
+/* Edicion de boton de acordion: Ocultar flecha nativa */
 .accordion-button::after {
   display: none !important;
 }
 
-/* 2. Crear nuestro propio icono "+" */
+/* Crear nuestro propio icono "+" */
 .accordion-button::before {
   content: "\002B"; /* Código Unicode para el signo más */
   font-weight: bold;
@@ -410,10 +414,30 @@ nav.bg-prevencion div.navbarNavClass {
   transition: transform 0.3s;
 }
 
-/* 3. Cambiar el "+" por "-" cuando el botón no tiene la clase 'collapsed' (es decir, está abierto) */
+/* Cambiar el "+" por "-" cuando el botón está abierto */
 .accordion-button:not(.collapsed)::before {
   content: "\2212"; /* Código Unicode para el signo menos */
 }
+
+/* Fondo y texto del botón cuando el acordeón está ABIERTO */
+.accordion-button:not(.collapsed) {
+  background-color: rgba(
+    64,
+    149,
+    61,
+    0.1
+  ); /* Fondo verde corporativo muy suave */
+  color: #40953d; /* Texto y signo "-" en verde prevención */
+  box-shadow: inset 0 calc(-1 * var(--bs-accordion-border-width)) 0
+    var(--bs-accordion-border-color);
+}
+
+/* Color del resplandor (focus) al hacer clic en el botón */
+.accordion-button:focus {
+  border-color: #40953d;
+  box-shadow: 0 0 0 0.25rem rgba(64, 149, 61, 0.25); /* Reemplaza el aro azul por uno verde */
+}
+
 /* PAGINA DE CONTACTO*/
 /* Margen de desplazamiento para la sección de canales directos en pag-contacto.html */
 #info-contacto {
