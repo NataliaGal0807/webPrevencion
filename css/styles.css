@@ -189,7 +189,7 @@ nav.bg-prevencion div.navbarNavClass {
   position: relative;
   z-index: 10; /* Asegura que el formulario quede por encima del filtro oscuro del hero */
   margin-top: -70px; /* Este margen negativo "tira" la sección hacia arriba sobre la imagen */
-  padding-bottom: 50px; /* Espacio extra abajo para que no quede pegado al footer */
+  padding-bottom: 50px;
   scroll-margin-top: 120px;
 }
 #contacto .container {
@@ -331,7 +331,14 @@ nav.bg-prevencion div.navbarNavClass {
     color 0.3s ease,
     padding-left 0.3s ease;
 }
-
+/* Resaltar la página actual en los enlaces del footer */
+.footer-links a.activo {
+  color: var(--secondary-color);
+  font-weight: bold;
+  text-shadow:
+    0px 0px 8px rgba(64, 149, 61, 0.8),
+    0px 0px 12px rgba(64, 149, 61, 0.5);
+}
 .footer-links a:hover {
   color: var(--secondary-color); /* Cambia a verde claro al pasar el mouse */
   padding-left: 5px; /* Efecto sutil de desplazamiento hacia la derecha */
@@ -427,14 +434,14 @@ nav.bg-prevencion div.navbarNavClass {
     61,
     0.1
   ); /* Fondo verde corporativo muy suave */
-  color: #40953d; /* Texto y signo "-" en verde prevención */
+  color: var(--primary-color); /* Texto y signo "-" en verde prevención */
   box-shadow: inset 0 calc(-1 * var(--bs-accordion-border-width)) 0
     var(--bs-accordion-border-color);
 }
 
 /* Color del resplandor (focus) al hacer clic en el botón */
 .accordion-button:focus {
-  border-color: #40953d;
+  border-color: var(--primary-color);
   box-shadow: 0 0 0 0.25rem rgba(64, 149, 61, 0.25); /* Reemplaza el aro azul por uno verde */
 }
 
