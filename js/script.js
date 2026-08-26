@@ -136,8 +136,8 @@ const misServicios = [
 
 const container = document.getElementById("accordionServicios");
 
-// Solo se ejecuta si el elemento existe en la página actual
 if (container) {
+  // 1. Renderizamos los acordeones
   misServicios.forEach((item) => {
     container.innerHTML += `
       <div class="accordion-item border-top border-bottom-0 border-start-0 border-end-0">
@@ -152,34 +152,51 @@ if (container) {
       </div>`;
   });
 
-  // La lógica para abrir el acordeón queda exactamente igual
-  // Lógica sin rebotes para abrir el acordeón desde un enlace externo
-  const hash = window.location.hash;
+  // 2. Función que maneja la apertura y el scroll
+  function activarAcordeonDesdeUrl() {
+    const hash = window.location.hash;
 
-  if (hash) {
-    history.replaceState(null, null, window.location.pathname);
-    const acordeonObjetivo = document.querySelector(hash);
+    if (hash) {
+      history.replaceState(null, null, window.location.pathname);
+      const acordeonObjetivo = document.querySelector(hash);
 
-    if (acordeonObjetivo) {
-      const bsCollapse = new bootstrap.Collapse(acordeonObjetivo, {
-        toggle: false,
-      });
-
-      acordeonObjetivo.addEventListener(
-        "shown.bs.collapse",
-        function () {
+      if (acordeonObjetivo) {
+        // Si el acordeón YA ESTÁ abierto, solo hacemos scroll
+        if (acordeonObjetivo.classList.contains("show")) {
           acordeonObjetivo.parentElement.scrollIntoView({
             behavior: "smooth",
             block: "center",
           });
           history.replaceState(null, null, hash);
-        },
-        { once: true },
-      );
+        } else {
+          // Si está cerrado, lo abrimos y hacemos scroll
+          const bsCollapse = new bootstrap.Collapse(acordeonObjetivo, {
+            toggle: false,
+          });
 
-      bsCollapse.show();
+          acordeonObjetivo.addEventListener(
+            "shown.bs.collapse",
+            function () {
+              acordeonObjetivo.parentElement.scrollIntoView({
+                behavior: "smooth",
+                block: "center",
+              });
+              history.replaceState(null, null, hash);
+            },
+            { once: true },
+          );
+
+          bsCollapse.show();
+        }
+      }
     }
   }
+
+  // 3. Ejecutamos al cargar la página (cuando vienes desde el Inicio)
+  activarAcordeonDesdeUrl();
+
+  // 4. Ejecutamos si cambia la URL estando en la misma página (cuando haces clic en el footer de Servicios)
+  window.addEventListener("hashchange", activarAcordeonDesdeUrl);
 }
 // 2. CERRAR MENÚ AL HACER SCROLL EN MÓVIL (CIERRE SUAVE)
 window.addEventListener("scroll", function () {
