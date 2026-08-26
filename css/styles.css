@@ -90,10 +90,11 @@ nav.bg-prevencion ul li.soli-info a:hover {
 }
 
 nav .navbar-brand img.logo1 {
-  width: 50px;
+  width: 47px;
 }
 nav .navbar-brand img.logo2 {
   width: 220px;
+  margin-left: 6px;
 }
 nav.bg-prevencion div.navbarNavClass {
   font-size: 16px;
