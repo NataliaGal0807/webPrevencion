@@ -356,6 +356,14 @@ nav.bg-prevencion div.navbarNavClass {
 .whatsapp-footer .btn {
   font-size: 0.85rem;
 }
+/* Reduce la distancia de desplazamiento para el fade-up-left de AOS a solo 15px */
+[data-aos="fade-up-left"] {
+  transform: translate3d(15px, 15px, 0);
+}
+
+[data-aos="fade-up-left"].aos-animate {
+  transform: translate3d(0, 0, 0);
+}
 /* ==========================================
    FOOTER
    ========================================== */
