@@ -28,6 +28,8 @@
       href="https://fonts.googleapis.com/css2?family=Markazi+Text:wght@400..700&family=Noto+Sans+Symbols:wght@100..900&family=Stack+Sans+Headline:wght@200..700&display=swap"
       rel="stylesheet"
     />
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 
     <!-- 4. Estilos personalizados -->
     <link rel="stylesheet" href="css/styles.css" />
@@ -168,6 +170,8 @@
         id="hero-contacto"
         class="text-center py-5"
         style="background-color: var(--text-blue); color: white"
+        data-aos="fade-down"
+        data-aos-duration="5000"
       >
         <div class="container py-4">
           <h1 class="fw-bold display-5">Hablemos de Seguridad</h1>
@@ -186,7 +190,7 @@
       <section class="container my-5 py-4">
         <div id="info-contacto" class="row g-5 align-items-center">
           <!-- COLUMNA IZQUIERDA: SECCIÓN DE CONTACTO Y HORARIOS -->
-          <div class="col-lg-6">
+          <div class="col-lg-6 columna-contacto">
             <span
               class="text-uppercase fw-bold text-success small tracking-wide"
               >Canales Directos</span
@@ -528,9 +532,13 @@
         <i class="bi bi-whatsapp"></i>
       </button>
     </div>
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
     <script src="js/script.js"></script>
+    <!--Precarga el video de inicio de forma silenciosa mientras está en
+    Servicios-->
     <script>
-      // Precarga el video de inicio de forma silenciosa mientras está en Servicios
       window.addEventListener("DOMContentLoaded", () => {
         const videoPreload = document.createElement("link");
         videoPreload.rel = "prefetch";

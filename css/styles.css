@@ -681,4 +681,10 @@ nav.bg-prevencion div.navbarNavClass {
     color: var(--text-blue);
     line-height: 1.35;
   }
+  /*PAGINA CONTACTO*/
+  /* Aplica solo en dispositivos móviles y tablets (pantallas menores a 992px) */
+  .columna-contacto {
+    padding-left: 2.2rem;
+    padding-right: 2.2rem;
+  }
 }

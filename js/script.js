@@ -230,3 +230,9 @@ if (btnToggle && whatsappBox) {
     });
   }
 }
+// Inicializar AOS
+AOS.init({
+  duration: 1000, // Duración de la animación en milisegundos (800ms = 0.8s)
+  once: true, // true: la animación ocurre solo una vez al hacer scroll hacia abajo
+  offset: 100, // Distancia (en px) desde abajo de la pantalla para que se active
+});

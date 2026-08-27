@@ -27,6 +27,8 @@
       href="https://fonts.googleapis.com/css2?family=Markazi+Text:wght@400..700&family=Noto+Sans+Symbols:wght@100..900&family=Stack+Sans+Headline:wght@200..700&display=swap"
       rel="stylesheet"
     />
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 
     <!-- 4. Estilos personalizados -->
     <link rel="stylesheet" href="css/styles.css" />
@@ -187,13 +189,17 @@
         <!-- 3. Tu contenido original intacto -->
         <div class="container">
           <div class="hero-content">
-            <h1>Consultoría en Prevención de Riesgos</h1>
-            <p>
+            <h1 data-aos="fade-up">Consultoría en Prevención de Riesgos</h1>
+            <p data-aos="fade-up" data-aos-delay="200">
               Impulsamos la seguridad ocupacional y el desarrollo sostenible en
               el Maule con soluciones integrales para tu organización.
             </p>
 
-            <div class="d-flex gap-3 mt-4">
+            <div
+              class="d-flex gap-3 mt-4"
+              data-aos="fade-up"
+              data-aos-delay="300"
+            >
               <!-- Botón Principal: WhatsApp -->
               <a
                 href="https://wa.me/569XXXXXXXX"
@@ -215,7 +221,7 @@
     <main>
       <!--Formulario contacto-->
       <section id="contacto">
-        <div class="container">
+        <div class="container" data-aos="zoom-in" data-aos-duration="1000">
           <div class="row align-items-center justify-content-center">
             <!-- Información -->
             <div class="col-md-5">
@@ -299,7 +305,7 @@
 
           <div class="row g-4">
             <!-- Tarjeta 1 -->
-            <div class="col-md-4">
+            <div class="col-md-4" data-aos="fade-up">
               <div class="card h-100 border-0 shadow-sm service-card">
                 <img
                   src="img/primeros-auxilios.jpg"
@@ -328,7 +334,7 @@
             </div>
 
             <!-- Tarjeta 2 -->
-            <div class="col-md-4">
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="150">
               <div class="card h-100 border-0 shadow-sm service-card">
                 <img
                   src="img/ley-karin.jpg"
@@ -357,7 +363,7 @@
             </div>
 
             <!-- Tarjeta 3 -->
-            <div class="col-md-4">
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
               <div class="card h-100 border-0 shadow-sm service-card">
                 <img
                   src="img/asesoria-terreno.jpg"
@@ -561,6 +567,9 @@
         <i class="bi bi-whatsapp"></i>
       </button>
     </div>
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
     <script src="js/script.js"></script>
     <script>
       // Precarga el video de inicio de forma silenciosa mientras está en Servicios
