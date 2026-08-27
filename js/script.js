@@ -211,3 +211,22 @@ window.addEventListener("scroll", function () {
     bsCollapse.hide();
   }
 });
+
+// Lógica para abrir/cerrar el widget de WhatsApp
+const btnToggle = document.getElementById("btnWhatsAppToggle");
+const whatsappBox = document.getElementById("whatsappBox");
+const cerrarChat = document.getElementById("cerrarChat");
+
+if (btnToggle && whatsappBox) {
+  // Abrir o cerrar al hacer clic en el botón flotante
+  btnToggle.addEventListener("click", () => {
+    whatsappBox.classList.toggle("activo");
+  });
+
+  // Cerrar al hacer clic en la "X"
+  if (cerrarChat) {
+    cerrarChat.addEventListener("click", () => {
+      whatsappBox.classList.remove("activo");
+    });
+  }
+}

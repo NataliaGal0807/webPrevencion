@@ -249,6 +249,7 @@ nav.bg-prevencion div.navbarNavClass {
   height: 180px; /* Ajusta este valor si las quieres más altas o más bajas */
   object-fit: cover; /* Evita que la imagen se deforme, recortando los bordes si es necesario */
 }
+
 /* Botón flotante de WhatsApp */
 .btn-whatsapp-flotante {
   position: fixed;
@@ -274,7 +275,87 @@ nav.bg-prevencion div.navbarNavClass {
   background-color: #20ba5a;
   color: #fff;
 }
+/* Estilos del Widget de WhatsApp */
+.whatsapp-widget {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  z-index: 1029;
+  font-family: inherit;
+}
 
+/* Botón flotante circular */
+.whatsapp-toggle-btn {
+  width: 60px;
+  height: 60px;
+  background-color: #25d366;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 30px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.whatsapp-toggle-btn:hover {
+  transform: scale(1.1);
+}
+
+/* Cuadro de chat emergente */
+.whatsapp-box {
+  position: absolute;
+  bottom: 75px;
+  right: 0;
+  width: 280px;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+}
+
+/* Clase que activará JavaScript para mostrar la caja */
+.whatsapp-box.activo {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+/* Encabezado con el verde clásico de WhatsApp */
+.whatsapp-header {
+  background-color: #075e3a;
+}
+
+/* Burbuja de mensaje simulado */
+.whatsapp-message {
+  border-left: 4px solid #25d366;
+  font-size: 0.9rem;
+}
+/* 1. Texto del encabezado ("Atención al Cliente") */
+.whatsapp-header h6 {
+  font-size: 0.85rem; /* Ajusta este valor a tu gusto (ej. 0.8rem o 0.9rem) */
+}
+
+/* 2. Subtítulo del encabezado ("En línea") */
+.whatsapp-header small {
+  font-size: 0.75rem;
+}
+
+/* 3. Texto de la burbuja del mensaje de bienvenida */
+.whatsapp-message p {
+  font-size: 0.85rem; /* Letra más compacta para el mensaje */
+}
+
+/* 4. Texto dentro del botón de "Iniciar Chat" */
+.whatsapp-footer .btn {
+  font-size: 0.85rem;
+}
 /* ==========================================
    FOOTER
    ========================================== */
