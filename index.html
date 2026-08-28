@@ -233,32 +233,52 @@
 
             <!-- Formulario -->
             <div class="col-md-7">
-              <form>
+              <!-- Formulario modificado para Netlify -->
+              <form
+                name="formulario-contacto"
+                method="POST"
+                data-netlify="true"
+                netlify-honeypot="bot-field"
+              >
+                <!-- Campo oculto anti-spam (Honeypot) -->
+                <p class="d-none">
+                  <label
+                    >No llenes esto si eres humano: <input name="bot-field"
+                  /></label>
+                </p>
+
                 <div class="row g-2">
                   <div class="col-md-6">
                     <input
                       type="text"
+                      name="nombre"
                       class="form-control"
                       placeholder="Nombre"
+                      required
                     />
                   </div>
 
                   <div class="col-md-6">
                     <input
                       type="tel"
+                      name="celular"
                       class="form-control"
                       placeholder="Celular"
+                      required
                     />
                   </div>
                   <div class="col-md-12">
                     <input
                       type="email"
+                      name="correo"
                       class="form-control"
                       placeholder="Correo"
+                      required
                     />
                   </div>
                   <div class="col-md-12">
                     <textarea
+                      name="mensaje"
                       class="form-control"
                       rows="2"
                       placeholder="Escribe tu consulta o requerimiento aquí..."
