@@ -198,19 +198,6 @@ if (container) {
   // 4. Ejecutamos si cambia la URL estando en la misma página (cuando haces clic en el footer de Servicios)
   window.addEventListener("hashchange", activarAcordeonDesdeUrl);
 }
-// 2. CERRAR MENÚ AL HACER SCROLL EN MÓVIL (CIERRE SUAVE)
-window.addEventListener("scroll", function () {
-  const navCollapse = document.querySelector(".navbar-collapse");
-
-  // Verifica si el menú desplegable está abierto
-  if (navCollapse && navCollapse.classList.contains("show")) {
-    // Usa la animación nativa de Bootstrap para replegarlo suavemente
-    const bsCollapse =
-      bootstrap.Collapse.getInstance(navCollapse) ||
-      new bootstrap.Collapse(navCollapse, { toggle: false });
-    bsCollapse.hide();
-  }
-});
 
 // Lógica para abrir/cerrar el widget de WhatsApp
 const btnToggle = document.getElementById("btnWhatsAppToggle");
@@ -230,9 +217,10 @@ if (btnToggle && whatsappBox) {
     });
   }
 }
+
 // Inicializar AOS
 AOS.init({
-  duration: 900, // Duración de la animación en milisegundos (800ms = 0.8s)
-  once: true, // true: la animación ocurre solo una vez al hacer scroll hacia abajo
+  duration: 900, // Duración de la animación en milisegundos
+  once: true, // La animación ocurre solo una vez al hacer scroll hacia abajo
   offset: 100, // Distancia (en px) desde abajo de la pantalla para que se active
 });
