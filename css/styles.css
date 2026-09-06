@@ -2,7 +2,7 @@
 :root {
   --bg-body: #fff;
   --primary-color: #40953d;
-  --secondary-color: #c0eba6;
+  --secondary-color: #82cc76;
   --tertiary-color: #fccd2a;
   --text-blue: #2d3055;
   --bone-white: #fffdf6;
@@ -190,7 +190,47 @@ nav.bg-prevencion div.navbarNavClass {
   background-color: white;
   color: var(--text-blue);
 }
+/* Contenedor relativo de la imagen principal */
+.hero-img-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  padding: 0 25px 25px 0;
+}
 
+/* El cuadrado verde decorativo colocado por detrás */
+.hero-square-bg {
+  position: absolute;
+  top: -23px;
+  right: 0;
+  width: 85%;
+  height: 85%;
+  background-color: var(--primary-color);
+  border-radius: 0.5rem;
+  z-index: 1;
+  opacity: 0.85;
+  transition: transform 0.3s ease;
+}
+
+/* Efecto estético opcional al pasar el mouse por encima de la sección */
+.hero-img-wrapper:hover .hero-square-bg {
+  transform: translate(4px, -4px);
+}
+/* Botón de contorno con tu verde institucional exacto */
+.btn-outline-custom {
+  color: var(--primary-color);
+  border: 2px solid var(--primary-color);
+  background-color: transparent;
+  transition: all 0.3s ease;
+}
+
+.btn-outline-custom:hover {
+  background-color: var(--primary-color);
+  color: #ffffff;
+  border-color: var(--primary-color);
+  transform: translateY(-2px); /* Un leve realce sutil al pasar el mouse */
+  box-shadow: 0 4px 12px rgba(25, 135, 84, 0.2);
+}
 /* FORMULARIO DE CONTACTO */
 #contacto {
   position: relative;
@@ -239,7 +279,7 @@ nav.bg-prevencion div.navbarNavClass {
 }
 
 /* Estilo para las tarjetas de servicios en el inicio */
-.service-card {
+/*.service-card {
   border-radius: 10px;
   transition:
     transform 0.3s ease,
@@ -255,6 +295,88 @@ nav.bg-prevencion div.navbarNavClass {
 .service-card .service-img {
   height: 180px;
   object-fit: cover;
+}*/
+/* Tarjetas con estilo profesional e imagen de fondo */
+/* Tarjetas con estilo profesional e imagen de fondo */
+.card-servicio-pro {
+  border-radius: 10px !important;
+  overflow: hidden;
+  position: relative;
+  min-height: 420px;
+  background-color: #07101c;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.card-servicio-pro:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3) !important;
+}
+
+.card-img-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  z-index: 1; /* Nivel 1: La foto de fondo */
+  transition: transform 0.5s ease;
+}
+
+.card-servicio-pro:hover .card-img-bg {
+  transform: scale(1.05);
+}
+
+.card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Nivel 2: El degradado oscuro sobre la foto pero detrás del texto */
+  background: linear-gradient(
+    to bottom,
+    rgba(11, 25, 44, 0.1) 0%,
+    rgba(7, 16, 28, 0.4) 50%,
+    rgba(7, 16, 28, 0.9) 75%,
+    rgba(4, 10, 18, 0.98) 100%
+  );
+  z-index: 2;
+}
+
+/* Nivel 3: Forzamos que el cuerpo de la tarjeta (textos, íconos y botones) esté arriba de todo */
+.card-servicio-pro .card-body {
+  position: relative;
+  z-index: 3 !important;
+  padding-top: 6rem !important;
+}
+
+.icon-circle {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 2px solid var(--secondary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--secondary-color);
+  font-size: 1.25rem;
+  background: rgba(7, 16, 28, 0.7);
+}
+
+.link-card {
+  color: var(--secondary-color) !important;
+  transition: letter-spacing 0.3s ease;
+}
+
+.link-card:hover {
+  letter-spacing: 0.5px;
+  color: var(
+    --primary-color
+  ) !important; /* Un tono un pelín más oscuro al pasar el mouse opcionalmente */
 }
 
 /* Botón flotante de WhatsApp */
@@ -420,9 +542,6 @@ nav.bg-prevencion div.navbarNavClass {
 .footer-links a.activo {
   color: var(--secondary-color);
   font-weight: bold;
-  text-shadow:
-    0px 0px 8px rgba(64, 149, 61, 0.8),
-    0px 0px 12px rgba(64, 149, 61, 0.5);
 }
 .footer-links a:hover {
   color: var(--secondary-color);
