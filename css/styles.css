@@ -13,9 +13,11 @@ body {
   font-family: "Stack Sans Headline", sans-serif;
   background-color: var(--bone-white);
   padding-top: 45px; /* Evita que la NavBar tape el contenido */
+  overflow-x: hidden; /* Respaldo: evita que cualquier desborde horizontal mueva el navbar fijo */
 }
 html {
   font-size: 95%; /* Reduce sutilmente el tamaño base de todo el sitio */
+  overflow-x: hidden;
 }
 
 .btn-prevencion {
@@ -438,7 +440,7 @@ nav.bg-prevencion div.navbarNavClass {
   position: absolute;
   bottom: 75px;
   right: 0;
-  width: 280px;
+  width: 320px;
   background: white;
   border-radius: 10px;
   overflow: hidden;
@@ -704,7 +706,7 @@ nav.bg-prevencion div.navbarNavClass {
   }
 
   .navbar-toggler {
-    border-color: var(--primary-color);
+    border-color: var(--primary-color) !important;
     padding: 0.2rem 0.4rem;
     font-size: 0.9rem;
     border-width: 1.8px;
