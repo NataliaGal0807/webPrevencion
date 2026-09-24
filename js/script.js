@@ -240,6 +240,247 @@ if (btnToggle && whatsappBox) {
   }
 }
 
+/* ==========================================================
+   SLIDER DE SERVICIOS DESTACADOS (solo en index.html)
+   - Muestra 3 tarjetas (2 en tablet, 1 en móvil)
+   - Flechas, indicadores, swipe táctil y avance automático
+   ========================================================== */
+
+// Agrega o quita servicios aquí. "id" debe coincidir con el id del
+// servicio en misServicios para que "Leer más" abra el acordeón correcto.
+// "imagen": ruta de la foto de fondo. Si es null se usa un fondo de color.
+const serviciosDestacados = [
+  {
+    id: "cursos-primeros-auxilios",
+    titulo: "Cursos de Primeros Auxilios",
+    texto:
+      "Formación práctica para actuar ante emergencias médicas y estabilizar víctimas con técnicas vitales como RCP y maniobra de Heimlich.",
+    icono: "bi-heart-pulse",
+    imagen: "img/primeros-auxilios.jpg",
+  },
+  {
+    id: "ley-karin",
+    titulo: "Ley N° 21.643 (Ley Karin)",
+    texto:
+      "Normativa enfocada en prevenir, investigar y sancionar el acoso y la violencia en el trabajo, promoviendo ambientes seguros.",
+    icono: "bi-file-earmark-text",
+    imagen: "img/ley-karin.jpg",
+  },
+  {
+    id: "asesorias-terreno",
+    titulo: "Asesorías en Terreno",
+    texto:
+      "Visitas presenciales a faenas para detectar desviaciones en tiempo real y asegurar que las normativas de seguridad se apliquen.",
+    icono: "bi-shield-check",
+    imagen: "img/asesoria-terreno.jpg",
+  },
+  {
+    id: "diagnostico-prevencion",
+    titulo: "Diagnóstico en Prevención de Riesgos Laborales",
+    texto:
+      "Diagnóstico inicial y plan de acción preventivo a medida para cumplir la normativa sin frenar su productividad.",
+    icono: "bi-clipboard-check",
+    imagen: "img/diagnostico-prevencion.jpg",
+  },
+  {
+    id: "carpetas-arranque",
+    titulo: "Elaboración de Carpetas de Arranque",
+    texto:
+      "Gestión y validación de documentación de seguridad para autorizar el inicio de sus obras sin contratiempos.",
+    icono: "bi-clipboard-check",
+    imagen: "img/carpetas-arranque.jpg",
+  },
+  {
+    id: "reglamento-interno-riohs",
+    titulo: "Reglamento Interno (RIOHS)",
+    texto:
+      "Elaboramos y actualizamos el reglamento que fija derechos, obligaciones y sanciones en materia de orden, higiene y seguridad.",
+    icono: "bi-journal-text",
+    imagen: "img/reglamento-interno.jpg",
+  },
+  {
+    id: "gestion-cphs",
+    titulo: "Gestión del Comité Paritario (CPHS)",
+    texto:
+      "Asesoría para constituir y hacer funcionar su Comité Paritario, capacitando a sus representantes para prevenir accidentes.",
+    icono: "bi-people-fill",
+    imagen: "img/gestion-cphs.jpg",
+  },
+  {
+    id: "capacitaciones",
+    titulo: "Capacitaciones e IRL",
+    texto:
+      "Capacitación en Información de Riesgos Laborales (IRL) y autocuidado para un cumplimiento legal y seguro desde el primer día.",
+    icono: "bi-mortarboard",
+    imagen: "img/capacitaciones.jpg",
+  },
+];
+
+const sliderServicios = document.getElementById("sliderServicios");
+
+if (sliderServicios) {
+  const INTERVALO_MS = 4000; // Tiempo entre movimientos automáticos
+  const track = document.getElementById("sliderTrack");
+  const viewport = document.getElementById("sliderViewport");
+  const btnPrev = document.getElementById("sliderPrev");
+  const btnNext = document.getElementById("sliderNext");
+  const dotsBox = document.getElementById("sliderDots");
+  const reducirMovimiento = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
+
+  let indice = 0;
+  let porVista = obtenerPorVista();
+  let timer = null;
+
+  // 1. Generar las tarjetas
+  track.innerHTML = serviciosDestacados
+    .map((s) => {
+      const claseFondo = s.imagen ? "" : " sin-imagen";
+      const estiloFondo = s.imagen
+        ? `style="background-image: url('${s.imagen}')"`
+        : "";
+      return `
+        <div class="slider-slide">
+          <div class="card card-servicio-pro h-100 border-0 shadow">
+            <div class="card-img-bg${claseFondo}" ${estiloFondo}></div>
+            <div class="card-overlay"></div>
+            <div class="card-body p-4 d-flex flex-column position-relative text-white">
+              <div class="icon-circle mb-3"><i class="bi ${s.icono}"></i></div>
+              <h4 class="card-title fw-bold" style="font-size: 1.2rem">${s.titulo}</h4>
+              <p class="card-text text-light opacity-85" style="font-size: 0.9rem">${s.texto}</p>
+              <a href="servicios.html#${s.id}" class="fw-bold text-decoration-none mt-auto align-self-start d-flex align-items-center link-card">
+                LEER MÁS <i class="bi bi-arrow-right ms-2"></i>
+              </a>
+            </div>
+          </div>
+        </div>`;
+    })
+    .join("");
+
+  const slides = Array.from(track.children);
+
+  // 2. Cuántas tarjetas se ven según el ancho de pantalla
+  function obtenerPorVista() {
+    if (window.innerWidth >= 992) return 3;
+    if (window.innerWidth >= 576) return 2;
+    return 1;
+  }
+
+  function maxIndice() {
+    return Math.max(0, slides.length - porVista);
+  }
+
+  // 3. Indicadores (puntos)
+  function crearDots() {
+    dotsBox.innerHTML = "";
+    for (let i = 0; i <= maxIndice(); i++) {
+      const dot = document.createElement("button");
+      dot.type = "button";
+      dot.className = "slider-dot";
+      dot.setAttribute("aria-label", `Ir a la posición ${i + 1}`);
+      dot.addEventListener("click", () => {
+        irA(i);
+        reiniciarAuto();
+      });
+      dotsBox.appendChild(dot);
+    }
+  }
+
+  // 4. Mover el slider (con vuelta al inicio/final)
+  function irA(nuevo) {
+    if (nuevo > maxIndice()) nuevo = 0;
+    if (nuevo < 0) nuevo = maxIndice();
+    indice = nuevo;
+
+    sliderServicios.style.setProperty("--por-vista", porVista);
+    track.style.transform = `translateX(-${indice * (100 / porVista)}%)`;
+
+    // Tarjetas fuera de vista: no enfocables con teclado
+    slides.forEach((slide, i) => {
+      const visible = i >= indice && i < indice + porVista;
+      slide.toggleAttribute("inert", !visible);
+      slide.setAttribute("aria-hidden", String(!visible));
+    });
+
+    Array.from(dotsBox.children).forEach((dot, i) => {
+      dot.classList.toggle("activo", i === indice);
+      dot.setAttribute("aria-current", i === indice ? "true" : "false");
+    });
+  }
+
+  // 5. Movimiento automático
+  function iniciarAuto() {
+    detenerAuto();
+    if (reducirMovimiento) return; // Respeta la preferencia del usuario
+    timer = setInterval(() => irA(indice + 1), INTERVALO_MS);
+  }
+
+  function detenerAuto() {
+    clearInterval(timer);
+    timer = null;
+  }
+
+  function reiniciarAuto() {
+    iniciarAuto();
+  }
+
+  // 6. Eventos
+  btnNext.addEventListener("click", () => {
+    irA(indice + 1);
+    reiniciarAuto();
+  });
+
+  btnPrev.addEventListener("click", () => {
+    irA(indice - 1);
+    reiniciarAuto();
+  });
+
+  // Pausar al pasar el mouse o al enfocar con teclado
+  sliderServicios.addEventListener("mouseenter", detenerAuto);
+  sliderServicios.addEventListener("mouseleave", iniciarAuto);
+  sliderServicios.addEventListener("focusin", detenerAuto);
+  sliderServicios.addEventListener("focusout", iniciarAuto);
+
+  // Pausar cuando la pestaña no está visible
+  document.addEventListener("visibilitychange", () => {
+    document.hidden ? detenerAuto() : iniciarAuto();
+  });
+
+  // Deslizar con el dedo (o arrastrar con el mouse)
+  let inicioX = null;
+  viewport.addEventListener("pointerdown", (e) => {
+    inicioX = e.clientX;
+  });
+  viewport.addEventListener("pointerup", (e) => {
+    if (inicioX === null) return;
+    const diferencia = e.clientX - inicioX;
+    inicioX = null;
+    if (Math.abs(diferencia) > 50) {
+      irA(indice + (diferencia < 0 ? 1 : -1));
+      reiniciarAuto();
+    }
+  });
+  viewport.addEventListener("pointercancel", () => {
+    inicioX = null;
+  });
+
+  // Recalcular al cambiar el tamaño de la ventana
+  window.addEventListener("resize", () => {
+    const nuevoPorVista = obtenerPorVista();
+    if (nuevoPorVista !== porVista) {
+      porVista = nuevoPorVista;
+      crearDots();
+      irA(Math.min(indice, maxIndice()));
+    }
+  });
+
+  // 7. Arranque
+  crearDots();
+  irA(0);
+  iniciarAuto();
+}
+
 // Inicializar AOS
 AOS.init({
   duration: 900, // Duración de la animación en milisegundos
