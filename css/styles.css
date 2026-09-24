@@ -281,6 +281,65 @@ nav.bg-prevencion div.navbarNavClass {
   padding: 0.5rem;
 }
 
+/* Ayudas y mensajes de validación del formulario */
+#contacto .invalid-feedback {
+  margin-top: 4px;
+  font-size: 0.75rem;
+}
+
+/* Círculo de información sobre cada campo */
+.campo-ayuda {
+  position: relative;
+}
+
+.ayuda-btn {
+  position: absolute;
+  top: -8px;
+  right: 10px;
+  z-index: 3;
+  width: 16px;
+  height: 16px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background-color: #fff; /* tapa el borde del campo detrás del ícono */
+  color: var(--primary-color);
+  font-size: 16px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: help;
+  transition: color 0.3s ease;
+}
+
+.ayuda-btn:hover,
+.ayuda-btn:focus-visible {
+  color: #2e6e2c;
+}
+
+.ayuda-btn:focus-visible {
+  outline: 2px solid rgba(64, 149, 61, 0.5);
+  outline-offset: 2px;
+}
+
+.tooltip-prevencion {
+  --bs-tooltip-bg: var(--text-blue);
+  --bs-tooltip-max-width: 230px;
+  --bs-tooltip-font-size: 0.8rem;
+  --bs-tooltip-opacity: 1;
+}
+
+/* Campo correcto con el verde de la marca */
+#contacto .form-control.is-valid {
+  border-color: var(--primary-color);
+}
+
+#contacto .form-control.is-valid:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.25rem rgba(64, 149, 61, 0.25);
+}
+
 /* Estilo para las tarjetas de servicios en el inicio */
 /*.service-card {
   border-radius: 10px;

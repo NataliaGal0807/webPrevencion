@@ -480,6 +480,108 @@ if (sliderServicios) {
   irA(0);
   iniciarAuto();
 }
+/* ==========================================================
+   FORMULARIO DE CONTACTO (index.html): ayuda para llenar
+   correctamente el celular y el correo
+   ========================================================== */
+const formContacto = document.querySelector('form[name="formulario-contacto"]');
+
+if (formContacto) {
+  const campoCelular = document.getElementById("campo-celular");
+  const campoCorreo = document.getElementById("campo-correo");
+
+  // Muestra u oculta el error de un campo y le pone el mensaje al navegador
+  const mostrarEstado = (campo, mensaje) => {
+    campo.setCustomValidity(mensaje);
+    const valido = mensaje === "";
+    campo.classList.toggle("is-invalid", !valido);
+    campo.classList.toggle("is-valid", valido && campo.value.trim() !== "");
+    const aviso = campo.parentElement.querySelector(".invalid-feedback");
+    if (aviso) aviso.textContent = mensaje;
+  };
+
+  const limpiarEstado = (campo) => {
+    campo.setCustomValidity("");
+    campo.classList.remove("is-invalid", "is-valid");
+  };
+
+  // ---- Celular chileno: 9 dígitos que empiezan con 9 (acepta +56) ----
+  const digitosCelular = (valor) => {
+    let d = valor.replace(/\D/g, "");
+    if (d.startsWith("56") && d.length === 11) d = d.slice(2);
+    return d;
+  };
+
+  const validarCelular = () => {
+    const valor = campoCelular.value.trim();
+    let mensaje = "";
+    if (!valor) {
+      mensaje = "Ingresa tu número de celular.";
+    } else if (!/^9\d{8}$/.test(digitosCelular(valor))) {
+      mensaje =
+        "Escribe 9 dígitos que empiecen con 9, sin espacios de más. Ej: 9 1234 5678";
+    }
+    mostrarEstado(campoCelular, mensaje);
+    return mensaje === "";
+  };
+
+  campoCelular.addEventListener("input", () => {
+    // Solo números, espacios, guiones y el signo +
+    campoCelular.value = campoCelular.value.replace(/[^\d+\s-]/g, "");
+    if (campoCelular.classList.contains("is-invalid")) validarCelular();
+  });
+
+  campoCelular.addEventListener("blur", () => {
+    if (!campoCelular.value.trim()) return limpiarEstado(campoCelular);
+    if (validarCelular()) {
+      // Deja el número ordenado: +56 9 1234 5678
+      const d = digitosCelular(campoCelular.value);
+      campoCelular.value = `+56 ${d[0]} ${d.slice(1, 5)} ${d.slice(5)}`;
+    }
+  });
+
+  // ---- Correo: nombre@dominio.ext ----
+  const validarCorreo = () => {
+    const valor = campoCorreo.value.trim();
+    let mensaje = "";
+    if (!valor) {
+      mensaje = "Ingresa tu correo electrónico.";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(valor)) {
+      mensaje =
+        "Revisa el correo: debe llevar @ y un dominio completo. Ej: nombre@empresa.cl";
+    }
+    mostrarEstado(campoCorreo, mensaje);
+    return mensaje === "";
+  };
+
+  campoCorreo.addEventListener("input", () => {
+    if (campoCorreo.classList.contains("is-invalid")) validarCorreo();
+  });
+
+  campoCorreo.addEventListener("blur", () => {
+    campoCorreo.value = campoCorreo.value.trim();
+    if (!campoCorreo.value) return limpiarEstado(campoCorreo);
+    validarCorreo();
+  });
+
+  // Ayudas en círculo de información (tooltips de Bootstrap)
+  if (typeof bootstrap !== "undefined") {
+    formContacto
+      .querySelectorAll('[data-bs-toggle="tooltip"]')
+      .forEach((el) => {
+        new bootstrap.Tooltip(el, {
+          trigger: "hover focus",
+          placement: "top",
+          container: "body",
+          customClass: "tooltip-prevencion",
+        });
+      });
+  }
+
+  // Al enviar, el navegador avisa con estos mismos mensajes
+  campoCelular.addEventListener("invalid", validarCelular);
+  campoCorreo.addEventListener("invalid", validarCorreo);
+}
 
 // Inicializar AOS
 AOS.init({
