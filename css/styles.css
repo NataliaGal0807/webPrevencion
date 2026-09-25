@@ -1067,6 +1067,14 @@ nav.bg-prevencion div.navbarNavClass {
   color: #6c757d;
 }
 
+/* El número del contador va dentro de un <span>, pero debe verse
+   igual de grande que los otros datos (+5, Maule), no como el
+   texto pequeño de abajo */
+.sobre-stat strong .contador {
+  font-size: inherit;
+  color: inherit;
+}
+
 .sobre-cta {
   padding: 2.2rem;
   border-left: 5px solid var(--primary-color);

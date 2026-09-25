@@ -582,7 +582,51 @@ if (formContacto) {
   campoCelular.addEventListener("invalid", validarCelular);
   campoCorreo.addEventListener("invalid", validarCorreo);
 }
+/* ==========================================================
+   CONTADOR ANIMADO (sobre-mi.html): el número sube desde 0
+   hasta el valor de "data-hasta" cuando entra en pantalla
+   ========================================================== */
+const contadores = document.querySelectorAll(".contador");
+const reducirMovimientoContador = window.matchMedia(
+  "(prefers-reduced-motion: reduce)",
+).matches;
 
+if (contadores.length) {
+  const DURACION_MS = 1500;
+
+  const animarContador = (elemento) => {
+    const hasta = parseInt(elemento.dataset.hasta, 10) || 0;
+
+    if (reducirMovimientoContador) {
+      elemento.textContent = hasta;
+      return;
+    }
+
+    const inicio = performance.now();
+
+    const paso = (ahora) => {
+      const progreso = Math.min((ahora - inicio) / DURACION_MS, 1);
+      elemento.textContent = Math.round(progreso * hasta);
+      if (progreso < 1) requestAnimationFrame(paso);
+    };
+
+    requestAnimationFrame(paso);
+  };
+
+  const observador = new IntersectionObserver(
+    (entradas, obs) => {
+      entradas.forEach((entrada) => {
+        if (entrada.isIntersecting) {
+          animarContador(entrada.target);
+          obs.unobserve(entrada.target);
+        }
+      });
+    },
+    { threshold: 0.5 },
+  );
+
+  contadores.forEach((elemento) => observador.observe(elemento));
+}
 // Inicializar AOS
 AOS.init({
   duration: 900, // Duración de la animación en milisegundos
