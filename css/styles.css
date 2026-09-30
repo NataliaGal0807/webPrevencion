@@ -204,7 +204,7 @@ nav.bg-prevencion div.navbarNavClass {
 /* El cuadrado verde decorativo colocado por detrás */
 .hero-square-bg {
   position: absolute;
-  top: 50px;
+  top: 60px;
   right: 0;
   width: 85%;
   height: 85%;
@@ -1067,12 +1067,10 @@ nav.bg-prevencion div.navbarNavClass {
   color: #6c757d;
 }
 
-/* El número del contador va dentro de un <span>, pero debe verse
-   igual de grande que los otros datos (+5, Maule), no como el
-   texto pequeño de abajo */
 .sobre-stat strong .contador {
   font-size: inherit;
   color: inherit;
+  display: inline;
 }
 
 .sobre-cta {

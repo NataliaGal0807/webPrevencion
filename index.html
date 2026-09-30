@@ -1,10 +1,71 @@
 <!doctype html>
 <html lang="es">
+  <!--
+  ============================================================
+  HEAD SEO — index.html
+  ============================================================
+-->
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Prevención de riesgos laborales</title>
+
+    <!-- SEO básico -->
+    <title>Prevención de Riesgos Laborales | Talca, Maule</title>
+    <meta
+      name="description"
+      content="Asesoría en prevención de riesgos y seguridad laboral en Talca y la Región del Maule. Cumple la normativa vigente. ¡Solicita tu asesoría gratis!"
+    />
+    <meta name="robots" content="index, follow" />
+    <meta
+      name="author"
+      content="Gerson Villar - Ingeniero en Prevención de Riesgos"
+    />
+    <link rel="canonical" href="https://www.seguridadygestion.cl/" />
+
+    <!-- Open Graph (WhatsApp, LinkedIn, Facebook) -->
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:site_name"
+      content="Seguridad y Gestión - Prevención de Riesgos"
+    />
+    <meta property="og:locale" content="es_CL" />
+    <meta property="og:url" content="https://www.seguridadygestion.cl/" />
+    <meta
+      property="og:title"
+      content="Prevención de Riesgos Laborales | Talca, Maule"
+    />
+    <meta
+      property="og:description"
+      content="Asesoría en prevención de riesgos y seguridad laboral en Talca y la Región del Maule. Cumple la normativa vigente. ¡Solicita tu asesoría gratis!"
+    />
+    <meta
+      property="og:image"
+      content="https://www.seguridadygestion.cl/img/og-image.jpg"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Consultoría en Prevención de Riesgos Laborales en la Región del Maule"
+    />
+
+    <!-- Twitter Card (aplica también a algunas previews de LinkedIn) -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Prevención de Riesgos Laborales | Talca, Maule"
+    />
+    <meta
+      name="twitter:description"
+      content="Asesoría en prevención de riesgos y seguridad laboral en Talca y la Región del Maule."
+    />
+    <meta
+      name="twitter:image"
+      content="https://www.seguridadygestion.cl/img/og-image.jpg"
+    />
+
     <link rel="icon" type="image/x-icon" href="img/favicon.ico" />
+
     <!-- 1. Bootstrap -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
@@ -32,6 +93,90 @@
 
     <!-- 4. Estilos personalizados -->
     <link rel="stylesheet" href="css/styles.css" />
+
+    <!-- Datos estructurados (Schema.org) — SOLO en index.html -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "Seguridad y Gestión - Gerson Villar, Prevención de Riesgos",
+        "alternateName": "Prevención de Riesgos Maule",
+        "description": "Consultoría en prevención de riesgos laborales, seguridad ocupacional y cumplimiento normativo para empresas de la Región del Maule.",
+        "image": "https://www.seguridadygestion.cl/img/logo-solo-texto.png",
+        "logo": "https://www.seguridadygestion.cl/img/logo-solo-texto.png",
+        "url": "https://www.seguridadygestion.cl/",
+        "telephone": "+56988829969",
+        "email": "contactoapr@seguridadygestion.cl",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Talca",
+          "addressRegion": "Región del Maule",
+          "addressCountry": "CL"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": -35.4264,
+          "longitude": -71.6553
+        },
+        "areaServed": [
+          {
+            "@type": "AdministrativeArea",
+            "name": "Región del Maule"
+          },
+          {
+            "@type": "City",
+            "name": "Talca"
+          }
+        ],
+        "openingHoursSpecification": {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "09:00",
+          "closes": "19:00"
+        },
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Servicios de Prevención de Riesgos",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Diagnóstico en Prevención de Riesgos Laborales"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Elaboración de Carpetas de Arranque"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Capacitaciones e Información de Riesgos Laborales (IRL)"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Reglamento Interno de Orden, Higiene y Seguridad (RIOHS)"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Gestión del Comité Paritario de Higiene y Seguridad (CPHS)"
+              }
+            }
+          ]
+        }
+      }
+    </script>
   </head>
   <body>
     <header>
@@ -202,7 +347,7 @@
             >
               <!-- Botón Principal: WhatsApp -->
               <a
-                href="https://wa.me/569XXXXXXXX"
+                href="https://wa.me/56988829969"
                 class="btn btn-prevencion px-4 btn-hero"
                 >Consultar por WhatsApp</a
               >

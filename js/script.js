@@ -593,6 +593,8 @@ const reducirMovimientoContador = window.matchMedia(
 
 if (contadores.length) {
   const DURACION_MS = 1500;
+  const PAUSA_MS = 1000; // pausa antes de reiniciar el conteo
+  const REPETIR_INFINITO = false; // false = se detiene en el número final (como ahora)
 
   const animarContador = (elemento) => {
     const hasta = parseInt(elemento.dataset.hasta, 10) || 0;
@@ -602,15 +604,27 @@ if (contadores.length) {
       return;
     }
 
-    const inicio = performance.now();
+    const ejecutarCiclo = () => {
+      const inicio = performance.now();
 
-    const paso = (ahora) => {
-      const progreso = Math.min((ahora - inicio) / DURACION_MS, 1);
-      elemento.textContent = Math.round(progreso * hasta);
-      if (progreso < 1) requestAnimationFrame(paso);
+      const paso = (ahora) => {
+        const progreso = Math.min((ahora - inicio) / DURACION_MS, 1);
+        elemento.textContent = Math.round(progreso * hasta);
+
+        if (progreso < 1) {
+          requestAnimationFrame(paso);
+        } else if (REPETIR_INFINITO) {
+          setTimeout(() => {
+            elemento.textContent = 0;
+            requestAnimationFrame(ejecutarCiclo);
+          }, PAUSA_MS);
+        }
+      };
+
+      requestAnimationFrame(paso);
     };
 
-    requestAnimationFrame(paso);
+    ejecutarCiclo();
   };
 
   const observador = new IntersectionObserver(
@@ -618,7 +632,7 @@ if (contadores.length) {
       entradas.forEach((entrada) => {
         if (entrada.isIntersecting) {
           animarContador(entrada.target);
-          obs.unobserve(entrada.target);
+          obs.unobserve(entrada.target); // el disparo por scroll sigue siendo una sola vez
         }
       });
     },
